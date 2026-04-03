@@ -1,0 +1,388 @@
+/* Font rendering (from Webflow embed) */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -o-font-smoothing: antialiased;
+    -webkit-appearance: none;
+}
+
+/* Global utility styles (from Webflow global-styles embed) */
+/* Ensure all elements inherit the color from its parent */
+body * {
+    color: inherit;
+}
+
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-slider-arrow-left,
+.w-slider-arrow-right,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+input[type="file"]:focus-visible {
+    outline: 0.125rem solid #4d65ff;
+    outline-offset: 0.125rem;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext> :not(div):first-child,
+.w-richtext>div:first-child> :first-child {
+    margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child,
+.w-richtext ol li:last-child,
+.w-richtext ul li:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Prevent all click and hover interaction with an element */
+.pointer-events-off {
+    pointer-events: none;
+}
+
+/* Enables all click and hover interaction with an element */
+.pointer-events-on {
+    pointer-events: auto;
+}
+
+/* Create a class of .div-square which maintains a 1:1 dimension of a div */
+.div-square::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+/* Make sure containers never lose their center alignment */
+.container-medium,
+.container-small,
+.container-large {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Adds inline flex display */
+.display-inlineflex {
+    display: inline-flex;
+}
+
+/* These classes are never overwritten */
+.hide {
+    display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+
+    .hide,
+    .hide-tablet {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hide-mobile-landscape {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+.margin-0 {
+    margin: 0rem !important;
+}
+
+.padding-0 {
+    padding: 0rem !important;
+}
+
+.spacing-clean {
+    padding: 0rem !important;
+    margin: 0rem !important;
+}
+
+.margin-top {
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.padding-top {
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+}
+
+.margin-right {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.padding-right {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0rem !important;
+}
+
+.margin-bottom {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.padding-bottom {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+}
+
+.margin-left {
+    margin-top: 0rem !important;
+    margin-right: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.padding-left {
+    padding-top: 0rem !important;
+    padding-right: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+
+.margin-horizontal {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+    margin-right: 0rem !important;
+    margin-left: 0rem !important;
+}
+
+.padding-vertical {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+}
+
+/* Apply "..." at 100% width */
+.truncate-width {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Removes native scrollbar */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Privacy policy page — layout, typography, back control */
+.privacy-page .main-wrapper {
+    padding-top: 3.75rem;
+}
+
+/* Homepage hero perspective grid (same asset as .section_header on index) */
+.privacy-policy-hero-bg {
+    position: relative;
+    z-index: 0;
+    color: var(--text-color--text-primary);
+    background-color: transparent;
+    background-image: url(https://cdn.prod.website-files.com/679292310fb7952b7d0afc07/67a8da1c070585bf0c55f7ce_Perspective%20Grid.avif);
+    background-position: 100% 0;
+    background-repeat: no-repeat;
+    background-size: min(1348px, 100%);
+    overflow: hidden;
+}
+
+.privacy-policy-hero-bg .section_privacy-policy,
+.privacy-policy-hero-bg .section_privacy {
+    position: relative;
+    z-index: 1;
+    background-image: none;
+}
+
+.privacy-back-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem 0.5rem 0.65rem;
+    border-radius: 999px;
+    background-color: #ffffff08;
+    -webkit-backdrop-filter: blur(9px);
+    backdrop-filter: blur(9px);
+    box-shadow: inset 0 0 12px #ffffff14, inset 0 2px 2px #ffffff29;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-color--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.privacy-back-link:hover {
+    color: var(--base-color-brand--orange);
+    border-color: rgba(255, 54, 0, 0.35);
+}
+
+.privacy-back-link_icon svg {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+}
+
+.privacy-policy-intro {
+    padding-top: 0.5rem;
+}
+
+.privacy-policy-title {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.5rem, 4vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--base-color-brand--orange);
+}
+
+.privacy-policy-meta {
+    margin: 0 0 1rem;
+    font-size: 0.8125rem;
+    opacity: 0.9;
+    /* color: var(--base-color-brand--orange); */
+}
+
+.privacy-policy-lead {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    max-width: 42rem;
+    /* color: var(--base-color-brand--orange); */
+}
+
+.privacy-policy-body {
+    max-width: 48rem;
+}
+
+.privacy-policy-ordered {
+    margin: 0;
+    padding-left: 1.5rem;
+    list-style: decimal;
+    list-style-position: outside;
+}
+
+.privacy-policy-ordered>li::marker {
+    color: var(--base-color-brand--orange);
+    font-weight: 600;
+}
+
+.privacy-policy-item {
+    margin-bottom: 2.25rem;
+    padding-left: 0.35rem;
+}
+
+.privacy-policy-item:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-policy-section-title {
+    margin: 0 0 0.65rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--base-color-brand--orange);
+}
+
+.privacy-policy-text {
+    margin: 0 0 0.65rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    /* color: var(--base-color-brand--orange); */
+}
+
+.privacy-policy-text:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-policy-note {
+    margin-top: 1rem;
+    opacity: 0.92;
+    font-size: 0.8125rem !important;
+    /* color: var(--base-color-brand--orange); */
+}
+
+.privacy-policy-points {
+    margin: 0.65rem 0 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+}
+
+.privacy-policy-points li {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    /* color: var(--base-color-brand--orange); */
+}
+
+.privacy-policy-points li:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-policy-points strong {
+    font-weight: 600;
+    color: var(--base-color-brand--white-orange);
+}
+
+.privacy-policy-hero-bg .privacy-policy-text a {
+    color: var(--base-color-brand--orange);
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
+.privacy-policy-hero-bg .privacy-policy-text a:hover {
+    color: var(--base-color-brand--white-orange);
+}
