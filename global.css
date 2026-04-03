@@ -3352,7 +3352,8 @@ figcaption {
 .heading-style-h3 {
     font-size: 1.75rem;
     font-weight: 700;
-    line-height: 1.2
+    line-height: 1.2;
+    color: var(--base-color-brand--orange);
 }
 
 .icon-1x1-large {
@@ -4624,6 +4625,51 @@ figcaption {
     background-size: 1348px
 }
 
+.contact_layout {
+    grid-column-gap: 4rem;
+    grid-row-gap: 3rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: start;
+    width: 100%;
+    display: grid
+}
+
+.contact_intro,
+.contact_form-wrap {
+    min-width: 0
+}
+
+.contact_intro {
+    text-align: left
+}
+
+.contact_intro .header_heading-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible
+}
+
+.contact_intro .heading-style-h1 {
+    font-size: clamp(1.5rem, 2.6svw + 1.05rem, 3.125rem);
+    letter-spacing: -0.03em;
+    line-height: 1.12
+}
+
+.contact_intro .heading-style-h1.heading-upper {
+    color: var(--base-color-brand--orange);
+    -webkit-text-fill-color: currentColor;
+    background-image: none;
+    -webkit-background-clip: unset;
+    background-clip: unset
+}
+
+.contact_form-wrap {
+    width: 100%;
+    max-width: 35rem;
+    justify-self: end
+}
+
 .success-text {
     font-weight: 600
 }
@@ -4887,13 +4933,21 @@ figcaption {
 }
 
 .faq10_answer {
-    overflow: hidden
+    width: 100%;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.45s cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .faq_accordion {
     flex-direction: column;
     justify-content: flex-start;
-    align-items: stretch
+    align-items: stretch;
+    display: flex
+}
+
+.faq_accordion.is-open .faq10_icon-wrapper {
+    transform: rotate(180deg)
 }
 
 .faq10_list {
@@ -4913,7 +4967,8 @@ figcaption {
 .faq10_icon-wrapper {
     align-self: flex-start;
     width: 2rem;
-    display: flex
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .faq_question {
@@ -4934,6 +4989,14 @@ figcaption {
     background-position: 50% 0;
     background-repeat: no-repeat;
     background-size: 1440px
+}
+
+.section_contact .padding-section-large {
+    padding-bottom: 3rem
+}
+
+.section_faq .padding-section-large {
+    padding-top: 3rem
 }
 
 .navbar_logo {
@@ -4968,7 +5031,7 @@ figcaption {
     background-color: #0000;
     justify-content: center;
     align-items: center;
-    max-width: 800px;
+    max-width: min(1200px, 60vw);
     margin-bottom: 1.5rem;
     margin-left: auto;
     margin-right: auto;
@@ -5301,7 +5364,41 @@ figcaption {
 }
 
 .footer_component {
-    color: var(--text-color--text-primary)
+    color: var(--text-color--text-primary);
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    background-color: #100f0d;
+    background-image:
+        radial-gradient(ellipse 95% 75% at 50% 32%, rgba(255, 54, 0, 0.16) 0%, transparent 58%),
+        radial-gradient(ellipse 110% 50% at 50% 100%, rgba(255, 90, 30, 0.1) 0%, transparent 52%),
+        radial-gradient(ellipse 80% 45% at 50% 0%, rgba(255, 248, 240, 0.045) 0%, transparent 50%),
+        linear-gradient(180deg, #121110 0%, #0e0d0c 35%, #151311 62%, #0a0908 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-position: center center, center bottom, center top, center center;
+    box-shadow:
+        inset 0 0 110px rgba(255, 54, 0, 0.055),
+        inset 0 -36px 90px -24px rgba(255, 54, 0, 0.09),
+        0 16px 48px rgba(0, 0, 0, 0.5)
+}
+
+.footer_component::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 160px 160px;
+    mix-blend-mode: overlay
+}
+
+.footer_component>* {
+    position: relative;
+    z-index: 1
 }
 
 .heading-4,
@@ -6518,8 +6615,32 @@ figcaption {
         background-position: 50% 100%
     }
 
+    .contact_layout {
+        grid-column-gap: 3rem;
+        grid-row-gap: 2.5rem;
+        grid-template-columns: 1fr
+    }
+
+    .contact_form-wrap {
+        justify-self: stretch;
+        max-width: none
+    }
+
+    .contact_intro .heading-style-h1 {
+        font-size: clamp(1.4rem, 3.4vw + 0.7rem, 2.65rem);
+        letter-spacing: -0.028em
+    }
+
     .section_contact {
         background-size: 990px
+    }
+
+    .section_contact .padding-section-large {
+        padding-bottom: 2.5rem
+    }
+
+    .section_faq .padding-section-large {
+        padding-top: 2.5rem
     }
 
     .gap_list {
@@ -7355,8 +7476,26 @@ figcaption {
         background-position: 50% 100%
     }
 
+    .contact_layout {
+        grid-row-gap: 2rem
+    }
+
+    .contact_intro .heading-style-h1 {
+        font-size: clamp(1.3rem, 4vw + 0.5rem, 2.25rem);
+        line-height: 1.14;
+        letter-spacing: -0.025em
+    }
+
     .section_contact {
         background-size: 767px
+    }
+
+    .section_contact .padding-section-large {
+        padding-bottom: 1.25rem
+    }
+
+    .section_faq .padding-section-large {
+        padding-top: 1.25rem
     }
 
     .gap_list {
@@ -7854,6 +7993,23 @@ figcaption {
         background-size: 479px
     }
 
+    .section_contact .padding-section-large {
+        padding-bottom: 1rem
+    }
+
+    .section_faq .padding-section-large {
+        padding-top: 1rem
+    }
+
+    .contact_intro .heading-style-h1 {
+        font-size: clamp(1.2rem, 4.8vw + 0.4rem, 2rem);
+        line-height: 1.16
+    }
+
+    .contact_intro .max-width-medium {
+        max-width: none
+    }
+
     .gap_column,
     .gap-column-middle,
     .gap-column {
@@ -7926,6 +8082,16 @@ figcaption {
         grid-row-gap: .75rem;
         flex-direction: column;
         grid-template-columns: 1fr
+    }
+
+    .footer_logo-text {
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #ffffff, #888888);
+        color: var(--base-color-brand--orange);
+        background-clip: text;
+        text-align: center;
     }
 
     .image-5 {

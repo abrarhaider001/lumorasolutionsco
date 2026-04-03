@@ -169,5 +169,75 @@ window.addEventListener("DOMContentLoaded", () => {
         );
     }
     );
+
+    const faqEase = "cubic-bezier(0.4, 0, 0.2, 1)";
+    const faqDur = "0.45s";
+
+    function syncFaqOpenHeights() {
+        document.querySelectorAll(".faq_accordion.is-open .faq10_answer").forEach((answer) => {
+            const inner = answer.firstElementChild;
+            if (!inner) return;
+            answer.style.height = `${inner.scrollHeight}px`;
+        });
+    }
+
+    window.addEventListener("resize", () => {
+        requestAnimationFrame(syncFaqOpenHeights);
+    });
+
+    document.querySelectorAll(".faq_accordion .faq_question").forEach((question) => {
+        question.addEventListener("click", (e) => {
+            e.preventDefault();
+            const acc = question.closest(".faq_accordion");
+            const answer = acc?.querySelector(".faq10_answer");
+            if (!acc || !answer) return;
+
+            const inner = answer.firstElementChild;
+            const opening = !acc.classList.contains("is-open");
+
+            if (opening) {
+                acc.classList.add("is-open");
+                answer.style.transition = "none";
+                answer.style.height = "0px";
+                void answer.offsetHeight;
+                const target = inner ? inner.scrollHeight : 0;
+                requestAnimationFrame(() => {
+                    answer.style.transition = `height ${faqDur} ${faqEase}`;
+                    answer.style.height = `${target}px`;
+                });
+                answer.addEventListener(
+                    "transitionend",
+                    function onOpenEnd(ev) {
+                        if (ev.propertyName !== "height") return;
+                        answer.style.height = "auto";
+                        answer.style.transition = "";
+                        answer.removeEventListener("transitionend", onOpenEnd);
+                    },
+                    { once: true }
+                );
+            } else {
+                let h = answer.scrollHeight;
+                if (answer.style.height === "auto" || answer.style.height === "") {
+                    answer.style.height = `${h}px`;
+                }
+                void answer.offsetHeight;
+                requestAnimationFrame(() => {
+                    answer.style.transition = `height ${faqDur} ${faqEase}`;
+                    answer.style.height = "0px";
+                });
+                answer.addEventListener(
+                    "transitionend",
+                    function onCloseEnd(ev) {
+                        if (ev.propertyName !== "height") return;
+                        acc.classList.remove("is-open");
+                        answer.style.height = "";
+                        answer.style.transition = "";
+                        answer.removeEventListener("transitionend", onCloseEnd);
+                    },
+                    { once: true }
+                );
+            }
+        });
+    });
 }
 );
