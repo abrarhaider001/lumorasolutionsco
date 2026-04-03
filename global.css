@@ -4252,6 +4252,124 @@ figcaption {
     overflow: hidden
 }
 
+.home-stats_component {
+    width: 100%;
+    padding-bottom: 0.25rem
+}
+
+.home-stats_glass {
+    position: relative;
+    border-radius: 1.25rem;
+    padding: clamp(1.75rem, 4vw, 2.75rem) clamp(1.25rem, 3vw, 2.5rem);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    overflow: hidden
+}
+
+.home-stats_inner {
+    position: relative;
+    z-index: 1
+}
+
+.home-stats_intro {
+    text-align: left;
+    max-width: 42rem;
+    margin-bottom: 3rem
+}
+
+.home-stats_intro .home-stats_title {
+    color: var(--base-color-brand--orange)
+}
+
+.home-stats_title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.12;
+    margin-bottom: .75rem;
+    color: var(--base-color-brand--orange)
+}
+
+.home-stats_title-accent {
+    display: inline-block;
+    margin-right: .35em
+}
+
+.home-stats_lead {
+    color: rgba(249, 241, 231, .62);
+    margin-bottom: 0;
+    max-width: 28rem
+}
+
+.home-stats_grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2rem;
+    align-items: start;
+    justify-items: center;
+    text-align: center;
+    margin-bottom: 2.75rem;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.home-stats_number {
+    font-size: clamp(2.125rem, 4.5vw, 3.25rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.03em;
+    background-image: linear-gradient(118deg, var(--base-color-brand--orange) 0%, #ff5c32 42%, var(--base-color-brand--white-orange) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: .5rem;
+    font-variant-numeric: tabular-nums
+}
+
+.home-stats_number .home-stats_value {
+    -webkit-text-fill-color: transparent
+}
+
+.home-stats_label {
+    font-size: .875rem;
+    line-height: 1.45;
+    color: rgba(249, 241, 231, .52);
+    max-width: 12rem
+}
+
+.home-stats_cta {
+    text-align: center
+}
+
+@media screen and (max-width:991px) {
+    .home-stats_grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-column-gap: 1.25rem
+    }
+
+    .home-stats_intro {
+        margin-bottom: 2.5rem
+    }
+}
+
+@media screen and (max-width:479px) {
+    .home-stats_grid {
+        grid-template-columns: 1fr;
+        grid-row-gap: 1.75rem
+    }
+
+    .home-stats_intro {
+        margin-bottom: 2rem
+    }
+}
+
 .ideas_content {
     flex-direction: column;
     justify-content: center;

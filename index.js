@@ -425,5 +425,61 @@ window.addEventListener("DOMContentLoaded", () => {
         },
         { passive: true }
     );
+
+    const statsRoot = document.getElementById("Stats");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function runHomeStatsCountUp() {
+        if (!statsRoot) return;
+        const values = statsRoot.querySelectorAll(".home-stats_value");
+        if (!values.length) return;
+
+        const durationMs = 1400;
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+        values.forEach((el, index) => {
+            const raw = el.getAttribute("data-target");
+            const target = raw ? parseInt(raw, 10) : NaN;
+            if (Number.isNaN(target)) return;
+
+            if (prefersReducedMotion) {
+                el.textContent = String(target);
+                return;
+            }
+
+            const delay = index * 70;
+            window.setTimeout(() => {
+                const start = performance.now();
+                function tick(now) {
+                    const elapsed = now - start;
+                    const t = Math.min(1, elapsed / durationMs);
+                    const n = Math.round(easeOutCubic(t) * target);
+                    el.textContent = String(n);
+                    if (t < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = String(target);
+                    }
+                }
+                requestAnimationFrame(tick);
+            }, delay);
+        });
+    }
+
+    if (statsRoot) {
+        let statsAnimated = false;
+        const statsIo = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting || statsAnimated) return;
+                    statsAnimated = true;
+                    runHomeStatsCountUp();
+                    statsIo.disconnect();
+                });
+            },
+            { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
+        );
+        statsIo.observe(statsRoot);
+    }
 }
 );
